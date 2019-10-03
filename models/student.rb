@@ -23,4 +23,11 @@ class Student
     @id = student_data.first()['id'].to_i()
   end
 
+  def self.all()
+    sql = "SELECT * FROM students"
+    students = SqlRunner.run(sql)
+    result = students.map{|student| Student.new(student)}
+    return result    
+  end
+
 end
