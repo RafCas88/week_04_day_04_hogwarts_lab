@@ -1,4 +1,6 @@
 require_relative('../db/sql_runner')
+require_relative('house')
+
 
 class Student
 
@@ -21,6 +23,16 @@ class Student
     values = [@first_name, @last_name, @age, @house_id]
     student_data = SqlRunner.run(sql, values)
     @id = student_data.first()['id'].to_i()
+  end
+
+  def house()
+    sql = "SELECT * FROM houses
+    WHERE id = $1"
+    values = [@house_id]
+    results = SqlRunner.run(sql, values)
+    house_hash = results[0]
+    house = House.new(house_hash)
+    return house
   end
 
   def self.find(id)

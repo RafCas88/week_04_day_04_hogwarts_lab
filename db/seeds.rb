@@ -1,3 +1,4 @@
+require('pry')
 require_relative('../models/student')
 require_relative('../models/house')
 
@@ -38,3 +39,6 @@ house1 = House.new({
 
             student1.save
             student2.save
+
+binding.pry
+nil
