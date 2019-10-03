@@ -10,11 +10,10 @@
   <input type="number" name="age" id="age-field"/>
 
   <label for="house-selection">Select a house:</label>
-  <select name="house" id="house-selection">
-    <option value="Gryffindor">Gryffindor</option>
-    <option value="Hufflepuff">Hufflepuff</option>
-    <option value="Ravenclaw">Ravenclaw</option>
-    <option value="Slytherin">Slytherin</option>
+  <select name="house_id" id="house-selection">
+    <% @houses.each do |house| %>
+    <option value="<%= house.id %>"><%= house.name %></option>
+    <% end %>
   </select>
 
   <input type="submit" value="Enrol">

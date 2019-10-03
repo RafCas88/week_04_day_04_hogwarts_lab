@@ -3,6 +3,7 @@ require( 'sinatra/contrib/all' )
 require( 'pry' )
 
 require_relative( './models/student' )
+require_relative( './models/house')
 also_reload( './models/*' )
 
 get '/students' do
@@ -11,6 +12,8 @@ get '/students' do
 end
 
 get '/students/new' do
+  @houses = House.all()
+  @house_names = @houses.map{|house| house.name}
   erb( :new )
 end
 
